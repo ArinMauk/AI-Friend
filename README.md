@@ -12,6 +12,7 @@ Make sure you have Python 3.12 or higher installed. You can download Python from
 
 For GPU acceleration, install CUDA 11.8 on your system. You can check if CUDA is installed using:
 
+
 ```
 nvcc --version
 ```
@@ -22,15 +23,9 @@ Ensure that the version matches CUDA 11.8. If it's not installed, download the C
 
 Ensure you have the latest NVIDIA drivers installed, as these are necessary for GPU acceleration with CUDA. You can check your driver version using:
 
+
 ```
 nvidia-smi
-```
-
-### 4. **LM Studio**
-
-How I got this to work for me locally is to use LM Studio. You can download it [here](https://lmstudio.ai/). For my testing, I used 
-```
-Dolphin-2.2.1-mistral-7b Q8 gguf
 ```
 by lmstudio-community. 
 
@@ -42,9 +37,11 @@ If the drivers are outdated, you can update them from [here](https://www.nvidia.
 
 First, clone the F5-TTS repository from GitHub:
 
+
 ```
 git clone https://github.com/SWivid/F5-TTS.git
 
+cd F5-TTS
 ```
  
 ### 2. **Create a Virtual Environment**
@@ -94,25 +91,16 @@ Along the way, we encountered several missing dependencies. Install them one by 
 
 - Install `numpy` (downgrade to version 1.x if necessary):
 
-```
-pip install numpy<2 tqdm cached_path soundfile speechrecognition sounddevice openai pyaudio
-```
+  ```
+  pip install numpy<2 tqdm cached_path soundfile
+  ```
 
 ### 5. **Running F5-TTS**
 
 Once everything is set up, test to make sure F5-TTS is up and running. You can run the inference using the following command:
 
 ```
-cd F5-TTS
 python inference-cli.py --model "F5-TTS" --gen_text "Your text to be synthesized here"
-```
-
-### 6. **Running chatBotUsingF5AndVoiceRecording**
-
-In the main directory, run the following: 
-
-```
-py chatBotUsingF5AndVoiceRecording.py
 ```
 
 ### Troubleshooting
