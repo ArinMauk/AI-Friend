@@ -37,7 +37,6 @@ First, clone the F5-TTS repository from GitHub:
 ```
 git clone https://github.com/SWivid/F5-TTS.git
 
-cd F5-TTS
 ```
 
 ### 2. **Create a Virtual Environment**
@@ -88,15 +87,24 @@ Along the way, we encountered several missing dependencies. Install them one by 
 - Install `numpy` (downgrade to version 1.x if necessary):
 
 ```
-pip install numpy<2 tqdm cached_path soundfile
+pip install numpy<2 tqdm cached_path soundfile speechrecognition sounddevice openai pyaudio
 ```
 
 ### 5. **Running F5-TTS**
 
-Once everything is set up, you can run the inference using the following command:
+Once everything is set up, test to make sure F5-TTS is up and running. You can run the inference using the following command:
 
 ```
+cd F5-TTS
 python inference-cli.py --model "F5-TTS" --gen_text "Your text to be synthesized here"
+```
+
+### 6. **Running chatBotUsingF5AndVoiceRecording**
+
+In the main directory, run the following: 
+
+```
+py chatBotUsingF5AndVoiceRecording.py
 ```
 
 ### Troubleshooting
