@@ -26,6 +26,14 @@ Ensure you have the latest NVIDIA drivers installed, as these are necessary for 
 nvidia-smi
 ```
 
+### 4. **LM Studio**
+
+How I got this to work for me locally is to use LM Studio. You can download it [here] (https://lmstudio.ai/). For my testing, I used 
+```
+Dolphin-2.2.1-mistral-7b Q8 gguf
+```
+by lmstudio-community. 
+
 If the drivers are outdated, you can update them from [here](https://www.nvidia.com/Download/index.aspx).
 
 ## Steps to Run F5-TTS
@@ -38,7 +46,7 @@ First, clone the F5-TTS repository from GitHub:
 git clone https://github.com/SWivid/F5-TTS.git
 
 ```
-
+ 
 ### 2. **Create a Virtual Environment**
 
 Create and activate a virtual environment to avoid conflicts with global packages:
