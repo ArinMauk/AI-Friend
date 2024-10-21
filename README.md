@@ -77,10 +77,8 @@ pip install torchaudio==2.3.0+cu118 --extra-index-url https://download.pytorch.o
 
 Then, install the remaining dependencies:
 
-```bash
-
+```
 pip install -r requirements.txt
-
 ```
 
 ### 4. **Resolve Additional Dependencies**
@@ -91,6 +89,7 @@ Along the way, we encountered several missing dependencies. Install them one by 
 
   ```
   pip install numpy<2 tqdm cached_path soundfile
+
   ```
 
 ### 5. **Running F5-TTS**
