@@ -28,7 +28,7 @@ nvidia-smi
 
 ### 4. **LM Studio**
 
-How I got this to work for me locally is to use LM Studio. You can download it [here] (https://lmstudio.ai/). For my testing, I used 
+How I got this to work for me locally is to use LM Studio. You can download it [here](https://lmstudio.ai/). For my testing, I used 
 ```
 Dolphin-2.2.1-mistral-7b Q8 gguf
 ```
