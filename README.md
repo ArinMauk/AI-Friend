@@ -87,10 +87,9 @@ Along the way, we encountered several missing dependencies. Install them one by 
 
 - Install `numpy` (downgrade to version 1.x if necessary):
 
-  ```
-  pip install numpy<2 tqdm cached_path soundfile
-
-  ```
+```
+pip install numpy<2 tqdm cached_path soundfile
+```
 
 ### 5. **Running F5-TTS**
 
