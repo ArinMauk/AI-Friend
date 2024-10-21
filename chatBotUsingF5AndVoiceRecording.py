@@ -2,8 +2,6 @@ import speech_recognition as sr
 import subprocess
 import sounddevice as sd
 from pydub import AudioSegment
-import io
-import torch
 import openai
 import os
 import numpy as np
@@ -12,8 +10,6 @@ import time
 # Initialize F5-TTS
 def generate_tts(text):
     """Generate TTS from F5-TTS and play the result"""
-    # Generate a unique file name using timestamp
-    timestamp = int(time.time())
     output_file = "C:/Users/arinm/OneDrive/Desktop/testing questions/TTS-F5-test/F5-TTS/tests/out.wav"
     
     # Absolute path to inference-cli.py
@@ -25,17 +21,15 @@ def generate_tts(text):
     # Path to Python in F5-TTS virtual environment
     python_executable = "C:/Users/arinm/OneDrive/Desktop/testing questions/TTS-F5-test/F5-TTS/venv/Scripts/python"
     
-    # Running inference and saving the audio to a unique file
+    # Running inference
     command = [
         python_executable, inference_script,
         '--model', 'F5-TTS',
         '--gen_text', text
     ]
     
-    # Run the command with the correct working directory
     subprocess.run(command, cwd=f5_tts_directory)
     
-    # Ensure file is saved and exists before proceeding
     if not os.path.exists(output_file):
         raise FileNotFoundError(f"Audio file {output_file} not found.")
     
@@ -43,7 +37,7 @@ def generate_tts(text):
     audio_segment = AudioSegment.from_file(output_file, format="wav")
     
     # Extract raw audio data and convert to NumPy array
-    raw_audio = np.array(audio_segment.get_array_of_samples())  # Convert to NumPy array
+    raw_audio = np.array(audio_segment.get_array_of_samples())
     sample_rate = audio_segment.frame_rate
     
     # Play audio in real-time using sounddevice
