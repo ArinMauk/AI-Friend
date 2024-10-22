@@ -6,31 +6,32 @@ import openai
 import os
 import numpy as np
 import time
+from pathlib import Path
 
 # Initialize F5-TTS
 def generate_tts(text):
     """Generate TTS from F5-TTS and play the result"""
-    output_file = "C:/Users/arinm/OneDrive/Desktop/testing questions/TTS-F5-test/F5-TTS/tests/out.wav"
+    # Set up base directories dynamically
+    base_dir = Path(__file__).resolve().parent
+    f5_tts_directory = base_dir / "F5-TTS"
+    output_file = f5_tts_directory / "tests" / "out.wav"
     
     # Absolute path to inference-cli.py
-    inference_script = "C:/Users/arinm/OneDrive/Desktop/testing questions/TTS-F5-test/F5-TTS/inference-cli.py"
+    inference_script = f5_tts_directory / "inference-cli.py"
     
-    # Path to the F5-TTS directory
-    f5_tts_directory = "C:/Users/arinm/OneDrive/Desktop/testing questions/TTS-F5-test/F5-TTS"
-
     # Path to Python in F5-TTS virtual environment
-    python_executable = "C:/Users/arinm/OneDrive/Desktop/testing questions/TTS-F5-test/F5-TTS/venv/Scripts/python"
+    python_executable = base_dir / "venv" / "Scripts" / "python"
     
     # Running inference
     command = [
-        python_executable, inference_script,
+        str(python_executable), str(inference_script),
         '--model', 'F5-TTS',
         '--gen_text', text
     ]
     
-    subprocess.run(command, cwd=f5_tts_directory)
+    subprocess.run(command, cwd=str(f5_tts_directory))
     
-    if not os.path.exists(output_file):
+    if not output_file.exists():
         raise FileNotFoundError(f"Audio file {output_file} not found.")
     
     # Use Pydub to load the audio file
